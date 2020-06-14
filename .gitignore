@@ -1,0 +1,11 @@
+# Created by .ignore support plugin (hsz.mobi)
+### samsonites template
+# ignore by samsonites
+
+.idea
+
+.terraform
+
+*.tfstate
+.terraform.tfstate.lock.info
+terraform.tfstate.backup
