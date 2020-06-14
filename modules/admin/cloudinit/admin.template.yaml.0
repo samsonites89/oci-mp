@@ -1,0 +1,29 @@
+# Copyright 2017, 2019, Oracle Corporation and/or affiliates.  All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+#cloud-config
+package_upgrade: ${admin_upgrade}
+packages:
+  - python3
+timezone: ${timezone}
+write_files:
+# setup script
+  - path: "/root/admin/admin.sh"
+    permissions: "0700"
+    encoding: "gzip+base64"
+    content: |
+      ${admin_sh_content}
+  - content: |
+      LANG=en_US.utf-8
+      LC_ALL=en_US.utf-8
+    path: /etc/environment
+    append: true
+runcmd:
+ - echo "Configuring admin..."
+ - bash /root/admin/admin.sh
+ - echo "export OCI_CLI_AUTH=instance_principal" >>  /home/opc/.bashrc
+ - touch /home/opc/admin.finish
+# - echo "export LANG=en_US.UTF-8" >>  /home/opc/.bashrc
+# - echo "export LC_ALL=en_US.UTF-8" >>  /home/opc/.bashrc
+# - echo "export LC_CTYPE=en_US.UTF-8" >>  /home/opc/.bashrc
+# - su opc && source /home/opc/.bashrc

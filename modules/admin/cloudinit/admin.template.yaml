@@ -1,0 +1,31 @@
+# Copyright 2017, 2019, Oracle Corporation and/or affiliates.  All rights reserved.
+# Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
+
+#cloud-config
+package_upgrade: false
+timezone: ${timezone}
+ssh_pwauth: True
+password: nexledger
+chpasswd:
+  list: |
+    ubuntu:nexledger
+  expire: False
+write_files:
+  # setup script
+  - path: "/root/admin/admin.sh"
+    permissions: "0700"
+    encoding: "gzip+base64"
+    content: |
+      ${admin_sh_content}
+  - content: |
+      LANG=en_US.utf-8
+      LC_ALL=en_US.utf-8
+    path: /etc/environment
+    append: true
+runcmd:
+  - usermod -aG docker ubuntu
+  - bash /root/admin/admin.sh
+  - iptables -F
+  - touch /tmp/admin.finish
+#  - echo "Configuring admin..."
+
