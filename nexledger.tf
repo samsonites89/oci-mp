@@ -9,12 +9,11 @@ data "template_file" "generate_nexledger" {
 
 resource "null_resource" "nexledger_wait" {
   connection {
-    host        = module.admin.public_ip
-    #private_key = var.oke_ssh_keys.ssh_private_key
-    password    = "nexledger"
-    timeout     = "40m"
-    type        = "ssh"
-    user        = "ubuntu"
+    host     = module.admin.public_ip
+    password = "nexledger"
+    timeout  = "40m"
+    type     = "ssh"
+    user     = "ubuntu"
   }
 
   depends_on = [module.admin]

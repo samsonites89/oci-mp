@@ -3,7 +3,6 @@
 
 locals {
 
-
   oci_admin_identity = {
     #api_fingerprint      = var.api_fingerprint
     #api_private_key_path = var.api_private_key_path
@@ -21,16 +20,15 @@ locals {
   }
 
   oci_base_vcn = {
-    compartment_id      = var.compartment_ocid
-    label_prefix        = var.label_prefix
-    tenancy_id          = var.tenancy_ocid
-    nat_gateway_enabled = var.nat_gateway_enabled
-    vcn_cidr            = var.vcn_cidr
-    vcn_dns_label       = var.vcn_dns_label
-    vcn_name            = var.vcn_name
-    boot_volume         = var.boot_volume_size_in_gbs
+    compartment_id = var.compartment_ocid
+    label_prefix   = var.label_prefix
+    tenancy_id     = var.tenancy_ocid
+    vcn_cidr       = var.vcn_cidr
+    vcn_dns_label  = var.vcn_dns_label
+    vcn_name       = var.vcn_name
+    boot_volume    = var.boot_volume_size_in_gbs
     # local.use_existing_network referenced in network.tf
-    use_existing_network= var.network_strategy == var.network_strategy_enum["USE_EXISTING_VCN_SUBNET"] ? true : false
+    use_existing_network = var.network_strategy == var.network_strategy_enum["USE_EXISTING_VCN_SUBNET"] ? true : false
   }
 
   oci_admin_network = {
@@ -49,9 +47,9 @@ locals {
     ssh_public_key = var.ssh_public_key
     timezone       = var.vm_timezone
 
-    nexledger_opt     = join("", ["NEX=", var.nexledger_engine])
-    admin_boot_volume = var.boot_volume_size_in_gbs
-    use_existing_network= var.network_strategy == var.network_strategy_enum["USE_EXISTING_VCN_SUBNET"] ? true : false
+    nexledger_opt        = join("", ["NEX=", var.nexledger_engine])
+    admin_boot_volume    = var.boot_volume_size_in_gbs
+    use_existing_network = var.network_strategy == var.network_strategy_enum["USE_EXISTING_VCN_SUBNET"] ? true : false
 
   }
 

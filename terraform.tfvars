@@ -21,8 +21,8 @@ boot_volume_size_in_gbs = "50"
 
 #Nexledger configuration
 nexledger_engine = "E"
-subnet_id = "ocid1.subnet.oc1.iad.aaaaaaaacuu76nil44jjfsrbitibzjfmbgicde53nuikdqxuqajjbw46uhiq"
-vcn_id    = "ocid1.vcn.oc1.iad.amaaaaaaxmh2i5aawrvrxu6vj2myionhbqhe2r3ml5p3q6thqqtqz6dyv77a"
+subnet_id        = "ocid1.subnet.oc1.iad.aaaaaaaacuu76nil44jjfsrbitibzjfmbgicde53nuikdqxuqajjbw46uhiq"
+vcn_id           = "ocid1.vcn.oc1.iad.amaaaaaaxmh2i5aawrvrxu6vj2myionhbqhe2r3ml5p3q6thqqtqz6dyv77a"
 
 # tagging
 tagging = {

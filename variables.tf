@@ -28,7 +28,7 @@ variable "compartment_ocid" {
 }
 
 variable "user_ocid" {
-  description = "id of user that terraform will use to create the resources"
+  description = "Id of user that terraform will use to create the resources"
   type        = string
 }
 
@@ -150,11 +150,6 @@ variable "vcn_id" {
   default = ""
 }
 
-variable "nat_gateway_enabled" {
-  description = "whether to create a nat gateway in the vcn."
-  default     = true
-  type        = bool
-}
 
 variable "vcn_cidr" {
   description = "cidr block of VCN"

@@ -1,16 +1,6 @@
 # Copyright 2017, 2019, Oracle Corporation and/or affiliates.  All rights reserved.
 # Licensed under the Universal Permissive License v 1.0 as shown at https://oss.oracle.com/licenses/upl
-/*
-data "oci_core_images" "admin_images" {
-  compartment_id           = var.oci_admin_identity.compartment_id
-  #operating_system         = "Oracle Linux"
-  operating_system         = "CentOS"
-  #operating_system_version = "7.7"
-  operating_system_version = "7"
-  shape                    = var.oci_admin.admin_shape
-  sort_by                  = "TIMECREATED"
-}
-*/
+
 data "template_file" "admin_template" {
   template = file("${path.module}/scripts/nexledger_startup.sh")
   vars = {
@@ -50,7 +40,7 @@ data "oci_core_vnic_attachments" "admin_vnics_attachments" {
 
 }
 
-# Gets the OCID of the first (default) VNIC on the admin instance
+# Gets the OCID of the first (default) VNIC on the nexledger instance
 data "oci_core_vnic" "admin_vnic" {
   vnic_id = lookup(data.oci_core_vnic_attachments.admin_vnics_attachments.vnic_attachments[0], "vnic_id")
 
